@@ -8,3 +8,7 @@
 [X] eslint -D
 [X] prisma @prisma/client -D
 [X] supertest @types/supertest -D
+
+# Container Docker
+
+Run the command line `docker compose up`
