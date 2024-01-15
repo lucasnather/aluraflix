@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  aluraflix:
+    image: 'bitnami/postgresql'
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRESQL_USERNAME=admin
+      - POSTGRESQL_PASSWORD=superadmin321
+      - POSTGRESQL_DATABASE=aluraflix
