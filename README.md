@@ -12,3 +12,7 @@
 # Container Docker
 
 Run the command line `docker compose up`
+
+# Environment Variables
+
+Check the .env.example and to see what's the environment variables  on project
