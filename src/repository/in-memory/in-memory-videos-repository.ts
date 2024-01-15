@@ -28,6 +28,14 @@ export class InMemoryVideosRepository implements IVideos {
 		return videos
 	}
 
+	async findById(id: string) {
+		const videos = this.videos.find(video => video.id === id)
+
+		if(!videos) return null
+
+		return videos
+	}
+
 	async findAll() {
 		return this.videos
 	}

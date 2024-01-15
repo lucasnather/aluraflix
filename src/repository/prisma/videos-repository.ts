@@ -24,10 +24,23 @@ export class VideosRepository  implements IVideos {
 		return video
 	}
 
+	async findById(id: string) {
+		const video = await prisma.videos.findFirst({
+			where: {
+				id
+			}
+		})
+
+		if(!video) return null
+
+		return video
+	}
+
 	async findAll() {
 		const video = await prisma.videos.findMany()
 
 		return video
 	}
+
     
 }
