@@ -11,7 +11,7 @@ export class InMemoryVideosRepository implements IVideos {
 			id: data.id ?? randomUUID(),
 			title: this.validateTitle(data.title),
 			description: this.validateDescription(data.description),
-			url: data.url,
+			url: this.isURL(data.url),
 			createdAt: new Date()
 		}
 
@@ -60,6 +60,17 @@ export class InMemoryVideosRepository implements IVideos {
 		}
 
 		return description
+	}
+
+	private isURL(url: string) {
+		// eslint-disable-next-line no-useless-escape
+		const urlPattern: RegExp = /^(https?|ftp):\/\/([A-Za-z0-9.-]+)((\/[A-Za-z0-9\/_\-\.]*)*)$/
+
+		if(!urlPattern.test(url)) {
+			throw new Error('Enter a valid url')
+		}
+
+		return url
 	}
     
 }

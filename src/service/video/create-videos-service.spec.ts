@@ -25,6 +25,16 @@ describe('Create Videos Service', () => {
 		}))
 	})
 
+	it('shouldn`t be able to create a new video with a invalid url', async () => {
+		expect( async() => {
+			await sut.handle({
+				title: 'title',
+				description: 'venha ver meu video top',
+				url: 'invalid url'
+			})
+		}).rejects.toBeInstanceOf(Error)
+	})
+
 	it('shouldn`t be able to create a new video without a title', async () => {
 		expect( async() => {
 			await sut.handle({
