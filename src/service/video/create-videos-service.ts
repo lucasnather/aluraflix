@@ -1,4 +1,4 @@
-import { VideosAlreadyExistsError } from '@/erros/video-already-exists'
+import { VideosAlreadyExistsError } from '@/erros/video-already-exists-error'
 import { IVideos } from '@/interface/i-videos'
 import { Videos } from '@prisma/client'
 

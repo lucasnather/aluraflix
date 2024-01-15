@@ -28,6 +28,10 @@ export class InMemoryVideosRepository implements IVideos {
 		return videos
 	}
 
+	async findAll() {
+		return this.videos
+	}
+
 	private validateTitle(title: string) {
 		if(title.length < 3) {
 			throw new Error('The title must have 3 caracteres or more')
