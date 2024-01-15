@@ -36,6 +36,12 @@ export class InMemoryVideosRepository implements IVideos {
 		return videos
 	}
 
+	async deleteById(id: string) {
+		const videos = this.videos.findIndex(video => video.id === id)
+
+		this.videos.splice(1, videos)
+	}
+
 	async findAll() {
 		return this.videos
 	}

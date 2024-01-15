@@ -36,6 +36,14 @@ export class VideosRepository  implements IVideos {
 		return video
 	}
 
+	async deleteById(id: string) {
+		await prisma.videos.delete({
+			where: {
+				id
+			}
+		})
+	}
+
 	async findAll() {
 		const video = await prisma.videos.findMany()
 
