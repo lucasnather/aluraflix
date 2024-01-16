@@ -36,6 +36,19 @@ export class VideosRepository  implements IVideos {
 		return video
 	}
 
+	async updateById(data: Prisma.VideosUncheckedUpdateInput, id: string) {
+		const video = await prisma.videos.update({
+			where: {
+				id
+			},
+			data
+		})
+
+		if(!video) return null
+
+		return video
+	}
+
 	async deleteById(id: string) {
 		await prisma.videos.delete({
 			where: {

@@ -36,6 +36,22 @@ export class InMemoryVideosRepository implements IVideos {
 		return videos
 	}
 
+	async updateById(data: Prisma.VideosUncheckedUpdateInput, id: string) {
+		const indexVideo = this.videos.findIndex(video => video.id === id)
+		const video = this.videos.find(video => video.id === id)
+
+		if(!video) return null
+
+		return this.videos[indexVideo] = {
+			title: data.title == undefined ? video.title : data.title,
+			description: data.description == undefined ? video.description : data.description,
+			url: data.url == undefined ? video.url : data.url,
+			id: id,
+			createdAt: video.createdAt
+		}
+
+	}
+
 	async deleteById(id: string) {
 		const videos = this.videos.findIndex(video => video.id === id)
 
