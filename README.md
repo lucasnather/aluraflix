@@ -16,3 +16,7 @@ Run the command line `docker compose up`
 # Environment Variables
 
 Check the .env.example and to see what's the environment variables  on project
+
+# Test end-to-end
+
+If the command `npm run test:e2e` on Mac doesn't work, use the `sudo npm run test:e2e`
