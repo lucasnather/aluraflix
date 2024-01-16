@@ -42,14 +42,15 @@ export class InMemoryVideosRepository implements IVideos {
 
 		if(!video) return null
 
-		return this.videos[indexVideo] = {
-			title: data.title == undefined ? video.title : data.title,
-			description: data.description == undefined ? video.description : data.description,
-			url: data.url == undefined ? video.url : data.url,
+		this.videos[indexVideo] = {
+			title: data.title == undefined ? video.title : this.validateTitle(data.title),
+			description: data.description == undefined ? video.description : this.validateDescription(data.description),
+			url: data.url == undefined ? video.url : this.isURL(data.url),
 			id: id,
 			createdAt: video.createdAt
 		}
 
+		return this.videos[indexVideo]
 	}
 
 	async deleteById(id: string) {
