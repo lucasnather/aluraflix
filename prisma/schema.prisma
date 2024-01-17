@@ -11,11 +11,24 @@ datasource db {
 }
 
 model Videos {
-  id          String   @id @default(uuid())
-  title       String
-  description String
-  url         String   @unique
-  createdAt   DateTime @default(now()) @map("created_at")
+  id            String      @id @default(uuid())
+  categoryId    Categories? @relation(fields: [categories_id], references: [id])
+  title         String
+  description   String
+  url           String      @unique
+  createdAt     DateTime    @default(now()) @map("created_at")
+  categories_id String?
 
   @@map("videos")
+}
+
+model Categories {
+  id    String @id @default(cuid())
+  title String @unique
+  color String @unique
+
+  createdAt DateTime @default(now()) @map("created_at")
+  Videos    Videos[]
+
+  @@map("categories")
 }

@@ -1,11 +1,5 @@
 import { Prisma, Videos } from '@prisma/client'
 
-// export interface UpdatedProps {
-//     title?: string,
-//     description?: string,
-//     url?: string
-// }
-
 export interface IVideos {
     create(data: Prisma.VideosCreateInput): Promise<Videos>
     findByUrl(url: string): Promise<Videos | null>
