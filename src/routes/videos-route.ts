@@ -1,5 +1,5 @@
 import { create } from '@/controller/video/create'
-import { get } from '@/controller/video/get-by-id'
+import { get } from '@/controller/video/get'
 import { FastifyInstance } from 'fastify'
 
 export async function videosRoute(app: FastifyInstance) {
