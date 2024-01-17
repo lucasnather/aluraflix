@@ -1,7 +1,7 @@
 import { app } from '@/app'
 import request from 'supertest'
 
-describe('Get By Id Videos [GET]', () => {
+describe('Delete By Id Videos [DELETE]', () => {
 
 	beforeAll(async () => {
 		await app.ready()
@@ -11,7 +11,7 @@ describe('Get By Id Videos [GET]', () => {
 		await app.close()
 	})
 
-	it('should be able to get videos by id', async () => {
+	it('should be able to delete videos by id', async () => {
 		const videos = await request(app.server)
 			.post('/videos')
 			.send({
@@ -22,15 +22,13 @@ describe('Get By Id Videos [GET]', () => {
 
 		const { id } = videos.body.videos
 
-		console.log(id)
-
 		await request(app.server)
-			.get(`/videos/${id}`)
-			.expect(200)
+			.delete(`/videos/${id}`)
+			.expect(203)
 		
 	})
 
-	it('shouldn`t be able to get a video by invalid id', async () => {
+	it('shouldn`t be able to delete a video by invalid ids', async () => {
 		await request(app.server)
 			.get('/videos/invalid-id')
 			.expect(404)
