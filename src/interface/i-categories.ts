@@ -6,6 +6,6 @@ export interface FindProps {
 }
 
 export interface ICategories {
-    create(date: Prisma.CategoriesCreateInput): Promise<Categories>
+    create(data: Prisma.CategoriesCreateInput): Promise<Categories>
     findByTitleAndColor(data: FindProps): Promise<Categories |  null>
 }
