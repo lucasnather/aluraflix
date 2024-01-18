@@ -11,4 +11,5 @@ export interface ICategories {
     findAll(): Promise<Categories[] | null>
     findById(id: number): Promise<Categories | null>
     updateById(data: Prisma.CategoriesUncheckedUpdateInput, id: number): Promise<Categories | null>
+    deleteById(id: number): Promise<void>
 }

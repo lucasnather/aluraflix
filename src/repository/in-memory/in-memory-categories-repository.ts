@@ -63,6 +63,12 @@ export class InMemoryCategoriesRepository implements ICategories {
 
 	}
 
+	async deleteById(id: number) {
+		const indexCategory = this.categories.findIndex(category => category.id === id)
+
+		this.categories.splice(1, indexCategory)
+	}
+
 	private validateTitle(title: string) {
 		if(title.length === 0) {
 			throw new Error('')

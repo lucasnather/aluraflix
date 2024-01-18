@@ -4,7 +4,7 @@ import { FindCategoryByIdService } from './find-category-by-id-service'
 let categoryRepository: InMemoryCategoriesRepository
 let sut: FindCategoryByIdService
 
-describe('Finf Category By IDService', () => {
+describe('Find Category By ID Service', () => {
 
 	beforeEach(() => {
 		categoryRepository = new InMemoryCategoriesRepository()
