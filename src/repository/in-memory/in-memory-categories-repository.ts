@@ -35,6 +35,14 @@ export class InMemoryCategoriesRepository implements ICategories {
 		return this.categories
 	}
 
+	async findById(id: string) {
+		const category = this.categories.find(category => category.id === id)
+
+		if(!category) return null
+
+		return category
+	}
+
 	private validateTitle(title: string) {
 		if(title.length === 0) {
 			throw new Error('')

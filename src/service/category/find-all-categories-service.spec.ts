@@ -4,7 +4,7 @@ import { FindAllCategoriesService } from './find-all-categories-service'
 let categoryRepository: InMemoryCategoriesRepository
 let sut: FindAllCategoriesService
 
-describe('Create Category Service', () => {
+describe('Find All Categories Service', () => {
 
 	beforeEach(() => {
 		categoryRepository = new InMemoryCategoriesRepository()

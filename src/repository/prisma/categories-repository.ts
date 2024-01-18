@@ -39,5 +39,17 @@ export class CategoriesRepository implements ICategories {
 		return category
 	}
 
+	async findById(id: string) {
+		const category = await prisma.categories.findFirst({
+			where: {
+				id
+			}
+		})
+
+		if(!category) return null
+
+		return category
+	}
+
 
 }
