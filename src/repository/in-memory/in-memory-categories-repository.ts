@@ -43,6 +43,23 @@ export class InMemoryCategoriesRepository implements ICategories {
 		return category
 	}
 
+	async updateById(data: Prisma.CategoriesUncheckedUpdateInput, id: string) {
+		const indexCategory = this.categories.findIndex(category => category.id === data.id)
+		const category = this.categories.find(category => category.id === data.id)
+
+		if(!category) return null
+
+		this.categories[indexCategory] = {
+			title: data.title == undefined ? category.title : data.title,
+			color: data.color == undefined ? category.color : data.color,
+			id: id,
+			createdAt: category.createdAt
+		}
+
+		return this.categories[indexCategory]
+
+	}
+
 	private validateTitle(title: string) {
 		if(title.length === 0) {
 			throw new Error('')

@@ -51,5 +51,16 @@ export class CategoriesRepository implements ICategories {
 		return category
 	}
 
+	async updateById(data: Prisma.CategoriesUncheckedUpdateInput, id: string) {
+		const category = await prisma.categories.update({
+			where: {
+				id: id
+			},
+			data
+		})
+
+		return category
+	}
+
 
 }
