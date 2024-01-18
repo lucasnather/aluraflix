@@ -75,5 +75,17 @@ export class VideosRepository  implements IVideos {
 		return video
 	}
 
+	async findByTitle(title: string) {
+		const video = await prisma.videos.findMany({
+			where: {
+				title
+			}
+		})
+
+		if(!video) return null
+
+		return video
+	}
+
     
 }

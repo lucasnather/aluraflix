@@ -74,6 +74,14 @@ export class InMemoryVideosRepository implements IVideos {
 		return [video]
 	}
 
+	async findByTitle(title: string) {
+		const video = this.videos.find(video => video.title === title)
+
+		if(!video) return null
+
+		return [video]
+	}
+
 	private validateTitle(title: string) {
 		if(title.length < 3) {
 			throw new Error('The title must have 3 caracteres or more')

@@ -8,4 +8,5 @@ export interface IVideos {
     deleteById(id: string): Promise<void>
     findAll(): Promise<Videos[]>
     findByCategoryId(categoryId: number): Promise<Videos[] | null>
+    findByTitle(title: string): Promise<Videos[] | null>
 }
