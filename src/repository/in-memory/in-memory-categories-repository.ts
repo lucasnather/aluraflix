@@ -29,6 +29,12 @@ export class InMemoryCategoriesRepository implements ICategories {
 		return category
 	}
 
+	async findAll() {
+		if(this.categories.length === 0) return null
+
+		return this.categories
+	}
+
 	private validateTitle(title: string) {
 		if(title.length === 0) {
 			throw new Error('')

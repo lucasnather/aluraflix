@@ -1,5 +1,5 @@
+import { CategoryAlreadyExistsError } from '@/erros/category-already-exists-error'
 import { ICategories } from '@/interface/i-categories'
-import { CategoriesRepository } from '@/repository/prisma/categories-repository'
 import { Categories } from '@prisma/client'
 
 interface CreateCategoryRequest {
@@ -18,7 +18,7 @@ export class CreateCategoryService {
 	async handle(data: CreateCategoryRequest): Promise<CreateCategoryResponse> {
 		const findCategory = await this.categoryRepository.findByTitleAndColor(data)
 
-		if(findCategory) throw new CategoriesRepository()
+		if(findCategory) throw new CategoryAlreadyExistsError()
 
 		const category = await this.categoryRepository.create(data)
 

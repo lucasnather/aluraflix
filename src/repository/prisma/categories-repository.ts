@@ -31,5 +31,13 @@ export class CategoriesRepository implements ICategories {
 		return category
 	}
 
+	async findAll() {
+		const category = await prisma.categories.findMany()
+
+		if(category.length == 0) return null
+
+		return category
+	}
+
 
 }
