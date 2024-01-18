@@ -17,7 +17,8 @@ describe('Create Videos [POST]', () => {
 			.send({
 				title: 'new title',
 				description: 'new description',
-				url: 'http://aaa.com.br'
+				url: 'http://aaa.com.br',
+				categories_id: 1
 			})
 			.expect(201)
 	})
@@ -28,7 +29,7 @@ describe('Create Videos [POST]', () => {
 			.send({
 				title: 'ne',
 				description: 'new description',
-				url: 'ht://aaa.com.br'
+				url: 'http://aaa.com.br'
 			})
 			.expect(401)
 	})

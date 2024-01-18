@@ -14,6 +14,7 @@ export class InMemoryCategoriesRepository implements ICategories {
 			id: this.id,
 			title: this.validateTitle(data.title),
 			color: this.validateColor(data.color),
+			
 			createdAt: new Date()
 		}
 

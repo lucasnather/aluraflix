@@ -6,6 +6,7 @@ interface UpdatedVideosByIdRequest {
     title?: string
     description?: string
     url?: string,
+	categories_id?: number
     id: string
 }
 

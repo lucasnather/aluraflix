@@ -17,6 +17,7 @@ describe('Delete By id Videos Service', () => {
 			id: 'video-id',
 			title: 'video',
 			description: 'descricao do video',
+			categories_id: 2,
 			url: 'http://aaaa.com.br'
 		})
 

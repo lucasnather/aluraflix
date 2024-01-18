@@ -6,12 +6,14 @@ export class InMemoryVideosRepository implements IVideos {
 
 	private videos: Videos[] = []
 
-	async create(data: Prisma.VideosCreateInput){
+	async create(data: Prisma.VideosUncheckedCreateInput){
 		const videos: Videos = {
 			id: data.id ?? randomUUID(),
 			title: this.validateTitle(data.title),
 			description: this.validateDescription(data.description),
+			categories_id: data.categories_id ?? 1,
 			url: this.isURL(data.url),
+		
 			createdAt: new Date()
 		}
 
@@ -46,6 +48,7 @@ export class InMemoryVideosRepository implements IVideos {
 			title: data.title == undefined ? video.title : this.validateTitle(data.title),
 			description: data.description == undefined ? video.description : this.validateDescription(data.description),
 			url: data.url == undefined ? video.url : this.isURL(data.url),
+			categories_id: data.categories_id == undefined ? video.categories_id : data.categories_id,
 			id: id,
 			createdAt: video.createdAt
 		}
@@ -61,6 +64,14 @@ export class InMemoryVideosRepository implements IVideos {
 
 	async findAll() {
 		return this.videos
+	}
+	
+	async findByCategoryId(categoryId: number) {
+		const video = this.videos.find(video => video.categories_id === categoryId)
+
+		if(!video) return null
+
+		return [video]
 	}
 
 	private validateTitle(title: string) {

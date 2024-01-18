@@ -17,6 +17,7 @@ describe('Update By id Videos Service', () => {
 			id: 'video-id',
 			title: 'video',
 			description: 'descricao do video',
+			categories_id: 2,
 			url: 'http://aaaa.com.br'
 		})
 
@@ -24,12 +25,14 @@ describe('Update By id Videos Service', () => {
 			id: 'video-id',
 			title: 'video novo',
 			description: 'nova descricao',
+			categories_id: 5,
 			url: 'http://nova.com.br'
 		})
 
 		expect(videos).toEqual(expect.objectContaining({
 			id: 'video-id',
-			title: 'video novo'
+			title: 'video novo',
+			categories_id: 5
 		}))
 	})
 

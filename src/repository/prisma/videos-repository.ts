@@ -4,7 +4,7 @@ import { Prisma } from '@prisma/client'
 
 export class VideosRepository  implements IVideos {
 
-	async create(data: Prisma.VideosCreateInput) {
+	async create(data: Prisma.VideosUncheckedCreateInput) {
 		const video = await prisma.videos.create({
 			data
 		})
@@ -59,6 +59,18 @@ export class VideosRepository  implements IVideos {
 
 	async findAll() {
 		const video = await prisma.videos.findMany()
+
+		return video
+	}
+
+	async findByCategoryId(categoryId: number) {
+		const video = await prisma.videos.findMany({
+			where: {
+				categories_id: categoryId
+			}
+		})
+
+		if(!video) return null
 
 		return video
 	}
