@@ -18,7 +18,7 @@ describe('Create Category Service', () => {
 		})
 
 		expect(category).toEqual(expect.objectContaining({
-			id: expect.any(String),
+			id: expect.any(Number),
 			title: 'comedy',
 			createdAt: expect.any(Date)
 		}))

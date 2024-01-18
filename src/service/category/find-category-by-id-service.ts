@@ -3,7 +3,7 @@ import { ICategories } from '@/interface/i-categories'
 import { Categories } from '@prisma/client'
 
 interface FindCategoryByIdRequest {
-    id: string
+    id: number
 }
 
 interface FindCategoryByIdResponse {

@@ -5,7 +5,7 @@ import { Categories } from '@prisma/client'
 interface UpdateCategoryByIdRequest {
     title?: string
     color?: string
-    id: string
+    id: number
 }
 
 interface UpdateCategoryByIdResponse {

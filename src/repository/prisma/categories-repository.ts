@@ -39,7 +39,7 @@ export class CategoriesRepository implements ICategories {
 		return category
 	}
 
-	async findById(id: string) {
+	async findById(id: number) {
 		const category = await prisma.categories.findFirst({
 			where: {
 				id
@@ -51,7 +51,7 @@ export class CategoriesRepository implements ICategories {
 		return category
 	}
 
-	async updateById(data: Prisma.CategoriesUncheckedUpdateInput, id: string) {
+	async updateById(data: Prisma.CategoriesUncheckedUpdateInput, id: number) {
 		const category = await prisma.categories.update({
 			where: {
 				id: id

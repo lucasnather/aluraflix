@@ -13,17 +13,16 @@ describe('Finf Category By IDService', () => {
 
 	it('should be able to find categories by id', async () => {
 		await categoryRepository.create({
-			id: 'meu-id',
 			title: 'comedy',
 			color: 'green'
 		})
 
 		const { category } = await sut.handle({
-			id: 'meu-id'
+			id: 1
 		})
 
 		expect(category).toEqual(expect.objectContaining({
-			id: expect.any(String),
+			id: expect.any(Number),
 			title: 'comedy',
 			createdAt: expect.any(Date)
 		}))
@@ -32,7 +31,7 @@ describe('Finf Category By IDService', () => {
 	it('shouldn`t be able to find a category by id', async () => {
 		expect( async() => {
 			await sut.handle({
-				id: 'wrong-id'
+				id: 100
 			})
 		}).rejects.toBeInstanceOf(Error)
 	})

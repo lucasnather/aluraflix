@@ -11,7 +11,7 @@ export class InMemoryCategoriesRepository implements ICategories {
 		this.id++
 
 		const category: Categories = {
-			id: data.id ?? this.id.toString(),
+			id: this.id,
 			title: this.validateTitle(data.title),
 			color: this.validateColor(data.color),
 			createdAt: new Date()
@@ -38,7 +38,7 @@ export class InMemoryCategoriesRepository implements ICategories {
 		return this.categories
 	}
 
-	async findById(id: string) {
+	async findById(id: number) {
 		const category = this.categories.find(category => category.id === id)
 
 		if(!category) return null
@@ -46,7 +46,7 @@ export class InMemoryCategoriesRepository implements ICategories {
 		return category
 	}
 
-	async updateById(data: Prisma.CategoriesUncheckedUpdateInput, id: string) {
+	async updateById(data: Prisma.CategoriesUncheckedUpdateInput, id: number) {
 		const indexCategory = this.categories.findIndex(category => category.id === data.id)
 		const category = this.categories.find(category => category.id === data.id)
 

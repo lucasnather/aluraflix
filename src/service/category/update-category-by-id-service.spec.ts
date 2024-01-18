@@ -18,12 +18,12 @@ describe('Update Category By ID Service', () => {
 		})
 
 		const { category } = await sut.handle({
-			id: '1',
+			id: 1,
 			color: 'gray'
 		})
 
 		expect(category).toEqual(expect.objectContaining({
-			id: expect.any(String),
+			id: expect.any(Number),
 			title: 'comedy',
 			color: 'gray',
 			createdAt: expect.any(Date)
@@ -32,14 +32,13 @@ describe('Update Category By ID Service', () => {
 
 	it('shouldn`t be able to upddate a category with wrong id', async () => {
 		await categoryRepository.create({
-			id: 'meu-id',
 			title: 'comedy',
 			color: 'green'
 		})
 
 		expect( async() => {
 			await sut.handle({
-				id: 'wrong-id',
+				id: 100,
 				title: 'terror',
 				color: 'gray'
 			})

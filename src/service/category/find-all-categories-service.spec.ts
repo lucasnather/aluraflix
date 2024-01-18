@@ -13,7 +13,6 @@ describe('Find All Categories Service', () => {
 
 	it('should be able to find all categories', async () => {
 		await categoryRepository.create({
-			id: 'meu-id',
 			title: 'comedy',
 			color: 'green'
 		})
@@ -22,7 +21,7 @@ describe('Find All Categories Service', () => {
 
 		expect(category).toHaveLength(1)
 		expect(category).toEqual([expect.objectContaining({
-			id: expect.any(String),
+			id: expect.any(Number),
 			title: 'comedy',
 			createdAt: expect.any(Date)
 		})])
