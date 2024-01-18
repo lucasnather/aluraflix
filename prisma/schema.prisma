@@ -17,13 +17,13 @@ model Videos {
   description   String
   url           String      @unique
   createdAt     DateTime    @default(now()) @map("created_at")
-  categories_id String?
+  categories_id Int?
 
   @@map("videos")
 }
 
 model Categories {
-  id    String @id @default(cuid())
+  id    Int    @id @default(autoincrement())
   title String @unique
   color String @unique
 

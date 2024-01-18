@@ -1,14 +1,17 @@
 import { FindProps, ICategories } from '@/interface/i-categories'
 import { Categories, Prisma } from '@prisma/client'
-import { randomUUID } from 'node:crypto'
+//import { randomUUID } from 'node:crypto'
 
 export class InMemoryCategoriesRepository implements ICategories {
 
 	private categories: Categories[] = []
+	private id = 0
 
 	async create(data: Prisma.CategoriesCreateInput){
+		this.id++
+
 		const category: Categories = {
-			id: data.id ?? randomUUID(),
+			id: data.id ?? this.id.toString(),
 			title: this.validateTitle(data.title),
 			color: this.validateColor(data.color),
 			createdAt: new Date()

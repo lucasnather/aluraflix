@@ -13,13 +13,12 @@ describe('Update Category By ID Service', () => {
 
 	it('should be able to update categories by id', async () => {
 		await categoryRepository.create({
-			id: 'meu-id',
 			title: 'comedy',
 			color: 'green'
 		})
 
 		const { category } = await sut.handle({
-			id: 'meu-id',
+			id: '1',
 			color: 'gray'
 		})
 
