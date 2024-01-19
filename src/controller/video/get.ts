@@ -1,5 +1,5 @@
 import { VideosNotFoundError } from '@/erros/videos-not-found-error'
-import { makeGetVideos } from '@/factory/make-get-videos'
+import { makeGetVideos } from '@/factory/video/make-get-videos'
 import { FastifyReply, FastifyRequest } from 'fastify'
 
 export async function get(request: FastifyRequest, reply: FastifyReply) {

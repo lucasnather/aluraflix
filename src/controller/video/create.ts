@@ -1,5 +1,5 @@
 import { VideosAlreadyExistsError } from '@/erros/video-already-exists-error'
-import { makeCreateVideo } from '@/factory/make-create-video'
+import { makeCreateVideo } from '@/factory/video/make-create-video'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 

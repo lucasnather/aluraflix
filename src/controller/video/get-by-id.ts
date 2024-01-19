@@ -1,5 +1,5 @@
 import { VideosNotFoundError } from '@/erros/videos-not-found-error'
-import { makeGetVideosByID } from '@/factory/make-get-videos-by-id'
+import { makeGetVideosByID } from '@/factory/video/make-get-videos-by-id'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 

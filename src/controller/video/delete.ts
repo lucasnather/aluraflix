@@ -1,5 +1,5 @@
 import { VideosNotFoundError } from '@/erros/videos-not-found-error'
-import { makeDeleteVideo } from '@/factory/make-delete-video'
+import { makeDeleteVideo } from '@/factory/video/make-delete-video'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 

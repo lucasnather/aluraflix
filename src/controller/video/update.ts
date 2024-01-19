@@ -1,5 +1,5 @@
 import { VideosNotFoundError } from '@/erros/videos-not-found-error'
-import { makeUpdateVideo } from '@/factory/make-update-videos'
+import { makeUpdateVideo } from '@/factory/video/make-update-videos'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
