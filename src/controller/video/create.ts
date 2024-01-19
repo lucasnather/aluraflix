@@ -9,7 +9,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
 		title: z.string().min(3, 'Min 3 characters'),
 		description: z.string().min(3, 'Min 10 characters'),
 		url: z.string().url('Must be a valid URL'),
-		categories_id: z.coerce.number().optional()
+		categories_id: z.coerce.number().optional().default(1)
 	})
 
 	const { title, description, url, categories_id } = getBodySchema.parse(request.body)
@@ -17,7 +17,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
 	const createVideosService = makeCreateVideo()
 
 	try {
-		const videos = await createVideosService.handle({
+		const {videos} = await createVideosService.handle({
 			title,
 			description,
 			url,

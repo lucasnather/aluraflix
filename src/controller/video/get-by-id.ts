@@ -14,11 +14,11 @@ export async function getById(request: FastifyRequest, reply: FastifyReply) {
 	const createVideosService = makeGetVideosByID()
 
 	try {
-		const videos = await createVideosService.handle({
+		const { video } = await createVideosService.handle({
 			id
 		})
 
-		return reply.status(200).send(videos)
+		return reply.status(200).send(video)
 	} catch(e) {
 		if(e instanceof VideosNotFoundError) {
 			return reply.status(404).send({

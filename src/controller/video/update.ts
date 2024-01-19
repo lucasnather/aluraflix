@@ -21,7 +21,7 @@ export async function update(request: FastifyRequest, reply: FastifyReply) {
 	const createVideosService = makeUpdateVideo()
 
 	try {
-		const videos = await createVideosService.handle({
+		const { videos } = await createVideosService.handle({
 			title,
 			description,
 			url,

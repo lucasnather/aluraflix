@@ -7,7 +7,7 @@ export async function get(request: FastifyRequest, reply: FastifyReply) {
 	const createVideosService = makeGetVideos()
 
 	try {
-		const videos = await createVideosService.handle()
+		const { videos } = await createVideosService.handle()
 
 		return reply.status(200).send(videos)
 	} catch(e) {

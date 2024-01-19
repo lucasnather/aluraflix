@@ -20,11 +20,19 @@ describe('Get Videos [GET]', () => {
 
 	it('should be able to get all videos', async () => {
 		await request(app.server)
+			.post('/category')
+			.send({
+				title: 'LIVRE',
+				color: 'green'
+			})
+		
+		await request(app.server)
 			.post('/videos')
 			.send({
 				title: 'new title',
 				description: 'new description',
-				url: 'http://aaa.com.br'
+				url: 'http://aaa.com.br',
+				categories_id: 1
 			})
 		
 		await request(app.server)

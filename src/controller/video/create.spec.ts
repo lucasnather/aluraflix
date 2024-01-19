@@ -13,12 +13,19 @@ describe('Create Videos [POST]', () => {
 
 	it('should be able to register a new video', async () => {
 		await request(app.server)
+			.post('/category')
+			.send({
+				title: 'LIVRE',
+				color: 'green'
+			})
+
+		await request(app.server)
 			.post('/videos')
 			.send({
 				title: 'new title',
 				description: 'new description',
 				url: 'http://aaa.com.br',
-				categories_id: 1
+				
 			})
 			.expect(201)
 	})

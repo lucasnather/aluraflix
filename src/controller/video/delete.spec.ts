@@ -12,15 +12,23 @@ describe('Delete By Id Videos [DELETE]', () => {
 	})
 
 	it('should be able to delete videos by id', async () => {
+		await request(app.server)
+			.post('/category')
+			.send({
+				title: 'LIVRE',
+				color: 'green'
+			})
+
 		const videos = await request(app.server)
 			.post('/videos')
 			.send({
 				title: 'new title',
 				description: 'new description',
-				url: 'http://uau.com.br'
+				url: 'http://uau.com.br',
+				categories_id: 1
 			})
 
-		const { id } = videos.body.videos
+		const { id } = videos.body
 
 		await request(app.server)
 			.delete(`/videos/${id}`)

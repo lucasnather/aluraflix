@@ -12,6 +12,13 @@ describe('Update Videos [PUT]', () => {
 	})
 
 	it('should be able to update a video by id', async () => {
+		await request(app.server)
+			.post('/category')
+			.send({
+				title: 'LIVRE',
+				color: 'green'
+			})
+
 		const video = await request(app.server)
 			.post('/videos')
 			.send({
@@ -20,7 +27,7 @@ describe('Update Videos [PUT]', () => {
 				url: 'http://aaa.com.br'
 			})
 
-		const { id } = video.body.videos
+		const { id } = video.body
           
 		await request(app.server)
 			.put(`/videos/${id}`)

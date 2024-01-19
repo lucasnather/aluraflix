@@ -12,17 +12,22 @@ describe('Get By Id Videos [GET]', () => {
 	})
 
 	it('should be able to get videos by id', async () => {
+		await request(app.server)
+			.post('/category')
+			.send({
+				title: 'LIVRE',
+				color: 'green'
+			})
+
 		const videos = await request(app.server)
 			.post('/videos')
 			.send({
 				title: 'new title',
 				description: 'new description',
-				url: 'http://uau.com.br'
+				url: 'http://uau.com.br',
 			})
 
-		const { id } = videos.body.videos
-
-		console.log(id)
+		const { id } = videos.body
 
 		await request(app.server)
 			.get(`/videos/${id}`)
