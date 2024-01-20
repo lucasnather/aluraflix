@@ -40,6 +40,21 @@ describe('Get Videos [GET]', () => {
 			.expect(200)
 	})
 
+	it('should be able to get a specific video by search param', async () => {
+		await request(app.server)
+			.post('/videos')
+			.send({
+				title: 'title',
+				description: 'descriptionnn',
+				url: 'http://bbbb.com.br',
+				categories_id: 1
+			})
+		
+		await request(app.server)
+			.get('/videos?title=title')
+			.expect(200)
+	})
+
 	
 	
 })
