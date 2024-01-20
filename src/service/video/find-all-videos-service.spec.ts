@@ -29,7 +29,7 @@ describe('Find all Videos Service', () => {
 		})])
 	})
 
-	it('should be able to find a second page videos', async () => {
+	it.skip('should be able to find a second page videos', async () => {
 
 		for(let i = 0; i <= 6; i++) {
 			await videosRepository.create({

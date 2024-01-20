@@ -12,11 +12,10 @@ export class UsersRepository implements IUser {
 		return user
 	}
 
-	async findByEmailAndPassword(email: string, password: string) {
+	async findByEmail(email: string) {
 		const user = await prisma.users.findFirst({
 			where: {
-				email,
-				password
+				email
 			}
 		})
 

@@ -1,5 +1,6 @@
 import { IUser } from '@/interface/i-users'
 import { Prisma, Users } from '@prisma/client'
+import { hash } from 'bcryptjs'
 import { randomUUID } from 'node:crypto'
 
 export class InMemoryUsersRepository implements IUser {
@@ -11,7 +12,7 @@ export class InMemoryUsersRepository implements IUser {
 			id: data.id ?? randomUUID(),
 			email: data.email,
 			username: data.username,
-			password: data.password,
+			password: await hash(data.password, 6),
 			createdAt: new Date()
 		}
 
@@ -20,10 +21,8 @@ export class InMemoryUsersRepository implements IUser {
 		return users
 	}
 
-	async findByEmailAndPassword(email: string, password: string) {
-		const users = this.users.find(user => {
-			user.email === email && user.password === password
-		})
+	async findByEmail(email: string) {
+		const users = this.users.find(user => user.email == email)
 
 		if(!users) return null
 

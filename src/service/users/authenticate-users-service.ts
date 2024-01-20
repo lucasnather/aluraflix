@@ -3,26 +3,26 @@ import { IUser } from '@/interface/i-users'
 import { PasswordHash } from '@/utils/password-hash'
 import { Users } from '@prisma/client'
 
-interface AuthenticateserRequest {
+interface AuthenticateUserRequest {
     email: string
     password: string
 }
 
-interface AuthenticateserResponse {
+interface AuthenticateUserResponse {
     users: Users
 }
 
-export class AuthenticateserService {
+export class AuthenticateUserService {
 
 	constructor(private usersRepository: IUser) {}
 
-	async handle(data: AuthenticateserRequest): Promise<AuthenticateserResponse> {
-		const users = await this.usersRepository.findByEmailAndPassword(data.email, data.password)
+	async handle(data: AuthenticateUserRequest): Promise<AuthenticateUserResponse> {
+		const users = await this.usersRepository.findByEmail(data.email)
+		console.log(users)
 
 		if(!users) throw new InvalidCrendtialsError()
 
 		const passwordHash = new PasswordHash()
-
 
 		const doesPasswordExists = await passwordHash.comparaHash(data.password, users.password)
 
