@@ -17,9 +17,13 @@ export class UpdateCategoryByIdService {
 	constructor(private categoryRepository: ICategories) {}
 
 	async handle(data: UpdateCategoryByIdRequest): Promise<UpdateCategoryByIdResponse> {
+		const findCategory = await this.categoryRepository.findById(data.id)
+
+		if(!findCategory) throw new CategoryNotFoundError()
+
 		const category = await this.categoryRepository.updateById(data, data.id)
 
-		if(!category) throw new CategoryNotFoundError()
+		
 
 		return {
 			category

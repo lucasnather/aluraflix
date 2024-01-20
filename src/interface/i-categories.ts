@@ -10,6 +10,6 @@ export interface ICategories {
     findByTitleAndColor(data: FindProps): Promise<Categories |  null>
     findAll(): Promise<Categories[] | null>
     findById(id: number): Promise<Categories | null>
-    updateById(data: Prisma.CategoriesUncheckedUpdateInput, id: number): Promise<Categories | null>
+    updateById(data: Prisma.CategoriesUncheckedUpdateInput, id: number): Promise<Categories>
     deleteById(id: number): Promise<void>
 }
