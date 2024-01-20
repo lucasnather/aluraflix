@@ -1,9 +1,9 @@
 import { app } from '@/app'
 import request from 'supertest'
 
-describe('Find by id Categories [GET]', () => {
+describe('Delete by id Categories [DELETE]', () => {
 
-	beforeEach(async () => {
+	beforeAll(async () => {
 		await app.ready()
 	})
 
@@ -11,7 +11,7 @@ describe('Find by id Categories [GET]', () => {
 		await app.close()
 	})
 
-	it('should be able to find categories by id', async () => {
+	it('should be able to delete categories by id', async () => {
 		const category = await request(app.server)
 			.post('/category')
 			.send({
@@ -19,17 +19,18 @@ describe('Find by id Categories [GET]', () => {
 				color: 'green'
 			})
 
+            
 		const { id } = category.body
 
 		await request(app.server)
-			.get(`/category/${id}`)
-			.expect(200)
+			.delete(`/category/${id}`)
+			.expect(203)
+            
 	})
 
-	it('shouldn`t be able to find categories with invalid id', async () => {
-		
+	it('shouldn`t be able to delete categories with wrong id', async () => {
 		await request(app.server)
-			.get('/category/100')
+			.delete('/category/100')
 			.expect(404)
 	})
 
