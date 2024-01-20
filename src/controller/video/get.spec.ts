@@ -54,7 +54,4 @@ describe('Get Videos [GET]', () => {
 			.get('/videos?title=title')
 			.expect(200)
 	})
-
-	
-	
 })

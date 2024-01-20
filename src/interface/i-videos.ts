@@ -6,7 +6,7 @@ export interface IVideos {
     findById(id: string): Promise<Videos | null>
     updateById(data: Prisma.VideosUncheckedUpdateInput ,id: string): Promise<Videos | null>
     deleteById(id: string): Promise<void>
-    findAll(): Promise<Videos[]>
+    findAll(page: number): Promise<Videos[]>
     findByCategoryId(categoryId: number): Promise<Videos[] | null>
     findByTitle(title: string): Promise<Videos[] | null>
 }

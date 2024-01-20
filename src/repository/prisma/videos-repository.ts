@@ -57,8 +57,11 @@ export class VideosRepository  implements IVideos {
 		})
 	}
 
-	async findAll() {
-		const video = await prisma.videos.findMany()
+	async findAll(page: number = 1) {
+		const video = await prisma.videos.findMany({
+			take: 5,
+			skip: 5 * (page - 1)
+		})
 
 		return video
 	}

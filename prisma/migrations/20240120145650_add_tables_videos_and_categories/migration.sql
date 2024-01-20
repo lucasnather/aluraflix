@@ -5,14 +5,14 @@ CREATE TABLE "videos" (
     "description" TEXT NOT NULL,
     "url" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "categories_id" TEXT,
+    "categories_id" INTEGER DEFAULT 1,
 
     CONSTRAINT "videos_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "categories" (
-    "id" TEXT NOT NULL,
+    "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "color" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,

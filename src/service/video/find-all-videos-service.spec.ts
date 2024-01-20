@@ -19,7 +19,9 @@ describe('Find all Videos Service', () => {
 			url: 'http://aaaa.com.br'
 		})
 
-		const { videos } = await sut.handle()
+		const { videos } = await sut.handle({
+			page: 1
+		})
 
 		expect(videos).toHaveLength(1)
 		expect(videos).toEqual([expect.objectContaining({
@@ -27,10 +29,30 @@ describe('Find all Videos Service', () => {
 		})])
 	})
 
+	it('should be able to find a second page videos', async () => {
+
+		for(let i = 0; i <= 6; i++) {
+			await videosRepository.create({
+				id: `video-id ${i}`,
+				title:` video ${i}`,
+				description: `descricao do video ${i}`,
+				url: `http://aa${i}aa.com.br `
+			})
+		}
+
+		const { videos } = await sut.handle({
+			page: 2
+		})
+
+		expect(videos).toHaveLength(1)
+	})
+
 	it('should be able to throw a error when dont exist videos on database', async () => {
 		
 		expect(async () => {
-			await sut.handle()
+			await sut.handle({
+				page: 1
+			})
 		}).rejects.toBeInstanceOf(VideosNotFoundError)
 	})
 })

@@ -62,7 +62,7 @@ export class InMemoryVideosRepository implements IVideos {
 		this.videos.splice(1, videos)
 	}
 
-	async findAll() {
+	async findAll(page: number = 1) {
 		return this.videos
 	}
 	

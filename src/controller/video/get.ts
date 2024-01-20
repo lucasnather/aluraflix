@@ -7,10 +7,11 @@ import { z } from 'zod'
 export async function get(request: FastifyRequest, reply: FastifyReply) {
 
 	const getQuerySchema = z.object({
-		title: z.string().optional()
+		title: z.string().optional(),
+		page: z.coerce.number().optional().default(1),
 	})
 
-	const { title } = getQuerySchema.parse(request.query)
+	const { title , page} = getQuerySchema.parse(request.query)
 
 	const getVideosByTitleService = makeGetVideosByTitle()
 	const createVideosService = makeGetVideos()
@@ -24,7 +25,9 @@ export async function get(request: FastifyRequest, reply: FastifyReply) {
 			return reply.status(200).send(video)
 		}
 
-		const { videos } = await createVideosService.handle()
+		const { videos } = await createVideosService.handle({
+			page
+		})
 
 		return reply.status(200).send(videos)
 	} catch(e) {
