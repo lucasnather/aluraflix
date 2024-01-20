@@ -11,10 +11,10 @@ export async function getById(request: FastifyRequest, reply: FastifyReply) {
 
 	const { id } = getParamsSchema.parse(request.params)
 
-	const createVideosService = makeGetVideosByID()
+	const getVideosByIdService = makeGetVideosByID()
 
 	try {
-		const { video } = await createVideosService.handle({
+		const { video } = await getVideosByIdService.handle({
 			id
 		})
 
