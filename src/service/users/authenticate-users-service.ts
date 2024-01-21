@@ -18,7 +18,6 @@ export class AuthenticateUserService {
 
 	async handle(data: AuthenticateUserRequest): Promise<AuthenticateUserResponse> {
 		const users = await this.usersRepository.findByEmail(data.email)
-		console.log(users)
 
 		if(!users) throw new InvalidCrendtialsError()
 
